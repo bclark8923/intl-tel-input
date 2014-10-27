@@ -1,5 +1,5 @@
 /*
-International Telephone Input v3.6.4
+International Telephone Input v3.6.5
 https://github.com/Bluefieldscom/intl-tel-input.git
 */
 // wrap in UMD - see https://github.com/umdjs/umd/blob/master/jqueryPlugin.js
@@ -24,7 +24,7 @@ https://github.com/Bluefieldscom/intl-tel-input.git
         // don't insert international dial codes
         nationalMode: false,
         // number type to use for placeholders
-        numberType: "",
+        numberType: "MOBILE",
         // display only these countries
         onlyCountries: [],
         // the countries at the top of the list. defaults to united states and united kingdom
@@ -656,7 +656,7 @@ https://github.com/Bluefieldscom/intl-tel-input.git
         // update the input placeholder to an example number from the currently selected country
         _updatePlaceholder: function() {
             if (window.intlTelInputUtils && !this.hadInitialPlaceholder) {
-                var iso2 = this.selectedCountryData.iso2, numberType = this.options.numberType ? intlTelInputUtils.numberType[this.options.numberType] : intlTelInputUtils.numberType.FIXED_LINE, placeholder = intlTelInputUtils.getExampleNumber(iso2, this.options.nationalMode, numberType);
+                var iso2 = this.selectedCountryData.iso2, numberType = intlTelInputUtils.numberType[this.options.numberType || "FIXED_LINE"], placeholder = intlTelInputUtils.getExampleNumber(iso2, this.options.nationalMode, numberType);
                 this.telInput.attr("placeholder", placeholder);
             }
         },
